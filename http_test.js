@@ -16,7 +16,7 @@ const OUTPUT_FILE = path.resolve(OUTPUT_DIRECTORY, OUTPUT_FILE_NAME);
 // if I were very clever, I'd 
 // understand how to treat an http request like I do a file handle
 
-const iterations = 2;
+const iterations = 1000;
 for (let i = 0; i < iterations; i++) {
     const clientRequest = http.request(options);
     // response <http.IncomingMessage>: Emitted when a response is received to this request. This event is emitted only once
@@ -47,13 +47,11 @@ function writeContainerToFile(containerId) {
     const message = `\ncontainerId: ${containerId}\n`;
     console.log('writeContainerToFile - message', message);
     fs.open(OUTPUT_FILE, "a+", (err, fileDescriptor) => {
-        console.log('fileDescriptor', fileDescriptor);
         if (err) {
             // classic error handling => throw...
             console.log('oh no');
             return;
         }
-        console.log('message', message);
         fs.writeFileSync(OUTPUT_FILE, message, {
             encoding: 'utf-8',
             // mode: '0o666', // this is the default but it has to be an int, and I've already pulled one too many threads
