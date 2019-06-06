@@ -85,3 +85,7 @@ docker service update --image {tagname} {serviceid}
 ```
 
 Note: you can get service id from `docker service ls`
+
+
+## Using the http_test.js
+`node ./http_test.js`
