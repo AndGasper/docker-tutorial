@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const FILE_TO_READ = path.resolve(__dirname, 'output', 'raw_container_output.log');
-const COUNT_STATS_FILE = path.resolve(__dirname, 'output', 'container_count_output.json');
+const COUNT_STATS_FILE = path.resolve(__dirname, 'output', 'container_count_output.log');
 
 const containers = {};
 fs.readFile(FILE_TO_READ, { encoding: 'utf-8' }, function(error, data) {
@@ -24,7 +24,7 @@ fs.readFile(FILE_TO_READ, { encoding: 'utf-8' }, function(error, data) {
             }
         });
         containers.timestamp = new Date();
-        fs.writeFileSync(COUNT_STATS_FILE, JSON.stringify(containers), {
+        fs.writeFileSync(COUNT_STATS_FILE, `${JSON.stringify(containers)},`, {
             encoding: 'utf-8',
             flag: 'a'
         });

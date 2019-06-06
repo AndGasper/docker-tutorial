@@ -32,3 +32,8 @@ Note: you can get service id from `docker service ls`
 ## Using the http_test.js
 `node ./http_test.js`
 - Truth be told, I'm not really sure what this is for just yet. Just thought it'd be interesting to see what would happen if I ran it 1000 times.
+
+
+## Lame ~benchmarking~
+1. `node http_test.js`
+2. `node count.js`
